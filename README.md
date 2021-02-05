@@ -18,7 +18,7 @@ Thai-address-autocomplete-react is an input component for ReactJS, which can aut
 
 Please go to `example` directory or click to [App.js](./example/src/App.js)
 
-- Online Demo: [Demo](https://buildingwatsize.github.io/thai-address-autocomplete-react)
+- Online Demo: [Demo](https://buildingwatsize.github.io/thai-address-autocomplete-react/)
 
 ## ⚙ Install
 

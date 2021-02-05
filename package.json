@@ -5,6 +5,7 @@
   "author": "buildingwatsize",
   "license": "MIT",
   "repository": "buildingwatsize/thai-address-autocomplete-react",
+  "homepage": ".",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
@@ -59,8 +60,8 @@
   },
   "keywords": [
     "react",
-    "datepicker",
-    "buddhist",
+    "autocomplete",
+    "address",
     "thai"
   ]
 }
