@@ -1,6 +1,6 @@
 {
   "name": "thai-address-autocomplete-react",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Thai-address-autocomplete-react is an Input Component for React can auto-complete thailand address with a magic by `just type something`",
   "author": "buildingwatsize",
   "license": "MIT",
@@ -53,7 +53,7 @@
     "dist"
   ],
   "dependencies": {
-    "antd": "^4.12.2",
+    "antd": "^5.6.1",
     "fsevents": "^1.2.13",
     "react-autocomplete": "^1.8.1",
     "thai-address-database": "^0.0.29"

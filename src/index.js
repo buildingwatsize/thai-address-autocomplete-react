@@ -1,14 +1,13 @@
-import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import React, { Component } from 'react'
 
+import { AutoComplete } from 'antd'
 import {
-  searchAddressByDistrict,
   searchAddressByAmphoe,
+  searchAddressByDistrict,
   searchAddressByProvince,
   searchAddressByZipcode
 } from 'thai-address-database'
-import { AutoComplete } from 'antd'
-const { Option } = AutoComplete
 
 class InputThaiAddress extends Component {
   state = {
@@ -40,9 +39,11 @@ class InputThaiAddress extends Component {
     const filtered = filter ? foundData.filter(filter) : foundData
     this.setState({
       options: filtered.map((item, key) => {
+        const label = `${item.district}${delimiter}${item.amphoe}${delimiter}${item.province}${delimiter}${item.zipcode}`
         return {
           key,
-          label: `${item.district}${delimiter}${item.amphoe}${delimiter}${item.province}${delimiter}${item.zipcode}`
+          label: label,
+          value: label
           // ALSO WORK (SLOWER WAY)
           // label: [item.district, item.amphoe, item.province, item.zipcode].join(delimiter)
           // OR SLOWEST WAY
@@ -71,24 +72,17 @@ class InputThaiAddress extends Component {
     const { value, style, AntdAutoCompleteProps } = this.props
 
     return (
-      <div>
-        <AutoComplete
-          value={value}
-          style={{
-            width: '100%',
-            ...style
-          }}
-          onSearch={this.handleSearch}
-          onSelect={this.handleSelect}
-          {...AntdAutoCompleteProps}
-        >
-          {options.map((el) => (
-            <Option key={el.key} value={el.label}>
-              {el.label}
-            </Option>
-          ))}
-        </AutoComplete>
-      </div>
+      <AutoComplete
+        value={value}
+        style={{
+          width: '100%',
+          ...style
+        }}
+        options={options}
+        onSearch={this.handleSearch}
+        onSelect={this.handleSelect}
+        {...AntdAutoCompleteProps}
+      />
     )
   }
 }
