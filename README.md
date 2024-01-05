@@ -1,119 +1,30 @@
-# thai-address-autocomplete-react
+# React + TypeScript + Vite
 
-[![NPM](https://img.shields.io/npm/v/thai-address-autocomplete-react.svg)](https://www.npmjs.com/package/thai-address-autocomplete-react) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com) [![NPM](https://img.shields.io/badge/BAAC-Library-289548)](https://www.npmjs.com/package/thaidatepicker-react)
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 📘 About
+Currently, two official plugins are available:
 
-Thai-address-autocomplete-react is an input component for ReactJS, which can auto-complete thailand address with a magic by `just type something`. You can discover more props please see [react-autocomplete](https://www.npmjs.com/package/react-autocomplete), so I hope this component will be a useful thing to you :D. Happy Coding.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## 📋 Features
+## Expanding the ESLint configuration
 
-- `maxResult`: Count of result on Dropdown (default: 10)
-- `delimiter`: Delimiter between field value (default: ", ")
-- `filter`: A function for filtering for more detail please go to example.
-- `style`: Define your beauty.
-- `AntdAutoCompleteProps`: for more props, please go to [https://ant.design/components/auto-complete/#API](https://ant.design/components/auto-complete/#API)
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-## 📝 Example
+- Configure the top-level `parserOptions` property like this:
 
-Please go to `example` directory or click to [App.js](./example/src/App.js)
-
-- Online Demo: [Demo](https://buildingwatsize.github.io/thai-address-autocomplete-react/)
-
-## ⚙ Install
-
-```bash
-npm install --save thai-address-autocomplete-react
-# or just `yarn add thai-address-autocomplete-react`
-```
-
-## 📌 Usage
-
-```jsx
-import React, { Component } from 'react'
-import InputThaiAddress from 'thai-address-autocomplete-react'
-
-class Example extends Component {
-  state = {
-    subdistrict: "", // tambon
-    district: "", // amphoe
-    province: "", // jangwat
-    zipcode: "", // postal code
-  }
-  onChange = (targetName) => (targetValue) => {
-    console.log(targetName, targetValue);
-    this.setState({ [targetName]: targetValue })
-  }
-  onSelect = (addresses) => {
-    const { subdistrict, district, province, zipcode } = addresses
-    this.setState({ subdistrict, district, province, zipcode })
-    // or this.setState({ ...addresses })
-  }
-  render() {
-    const {
-      subdistrict,
-      district,
-      province,
-      zipcode,
-    } = this.state
-    return (
-      <div>
-        <label>ตำบล</label>
-        <InputThaiAddress
-          field={"subdistrict"}
-          value={subdistrict}
-          onChange={this.onChange("subdistrict")}
-          onSelect={this.onSelect}
-        />
-        <label>อำเภอ</label>
-        <InputThaiAddress
-          field={"district"}
-          value={district}
-          onChange={this.onChange("district")}
-          onSelect={this.onSelect}
-        />
-        <label>จังหวัด</label>
-        <InputThaiAddress
-          field={"province"}
-          value={province}
-          onChange={this.onChange("province")}
-          onSelect={this.onSelect}
-        />
-        <label>รหัสไปรษณีย์</label>
-        <InputThaiAddress
-          field={"zipcode"}
-          value={zipcode}
-          onChange={this.onChange("zipcode")}
-          onSelect={this.onSelect}
-        />
-      </div>
-    )
-  }
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
 }
-
-export default Example
 ```
 
-### Filtering
-
-> When you want to filtering, please use `Field in raw data`.
-
-| Meaning   | Field in component | Field in raw data |
-|-----------|--------------------|-------------------|
-| ตำบล/แขวง | subdistrict        | district          |
-| อำเภอ/เขต | district           | amphoe            |
-| จังหวัด     | province           | province          |
-| รหัสไปรษณีย์ | zipcode            | zipcode           |
-
-## License
-
-MIT © [buildingwatsize](https://github.com/buildingwatsize)
-
-## ⚒ Thanks a lot
-
-- [Ant Design](https://ant.design/)
-- [Sellsuki/thai-address-database](https://github.com/Sellsuki/thai-address-database)
-- Idea from:
-  - [earthchie/jquery.Thailand.js](https://github.com/earthchie/jquery.Thailand.js)
-  - [zapkub/react-thailand-address-typeahead](https://github.com/zapkub/react-thailand-address-typeahead)
-  - [winChawakorn/react-thailand-address-autocomplete](https://github.com/winChawakorn/react-thailand-address-autocomplete)
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
