@@ -1,0 +1,29 @@
+{
+  "name": "example",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "link:../node_modules/react",
+    "react-dom": "link:../node_modules/react-dom",
+    "thai-address-autocomplete-react": "link:.."
+  },
+  "devDependencies": {
+    "@types/react": "link:../node_modules/@types/react",
+    "@types/react-dom": "link:../node_modules/@types/react-dom",
+    "@typescript-eslint/eslint-plugin": "link:../node_modules/@typescript-eslint/eslint-plugin",
+    "@typescript-eslint/parser": "link:../node_modules/@typescript-eslint/parser",
+    "@vitejs/plugin-react-swc": "link:../node_modules/@vitejs/plugin-react-swc",
+    "eslint": "link:../node_modules/eslint",
+    "eslint-plugin-react-hooks": "link:../node_modules/eslint-plugin-react-hooks",
+    "eslint-plugin-react-refresh": "link:../node_modules/eslint-plugin-react-refresh",
+    "typescript": "link:../node_modules/typescript",
+    "vite": "^5.0.8"
+  }
+}

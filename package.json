@@ -1,28 +1,53 @@
 {
   "name": "thai-address-autocomplete-react",
-  "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "author": "buildingwatsize (Chinnawat Chimdee)",
+  "keywords": [
+    "react",
+    "typescript",
+    "library",
+    "components",
+    "input",
+    "auto-complete",
+    "thai",
+    "addresses",
+    "thai-address-autocomplete-react"
+  ],
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc --p ./tsconfig.build.json && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "publish": "yarn build && npm publish",
+    "example-initial": "yarn install && yarn run build",
+    "example-build": "cd ./example && yarn install && yarn run build",
+    "example-preview": "cd ./example && yarn preview"
   },
   "dependencies": {
+    "antd": "^5.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
+    "@types/node": "^20.10.6",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
+    "@typescript-eslint/eslint-plugin": "^6.17.0",
+    "@typescript-eslint/parser": "^6.17.0",
     "@vitejs/plugin-react-swc": "^3.5.0",
-    "eslint": "^8.55.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "typescript": "^5.2.2",
-    "vite": "^5.0.8"
-  }
+    "vite": "^5.0.8",
+    "vite-plugin-dts": "^3.7.0"
+  },
+  "main": "dist/main.js",
+  "types": "dist/main.d.ts",
+  "files": [
+    "dist"
+  ]
 }

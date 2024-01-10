@@ -1,0 +1,82 @@
+.header-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.4rem 0px;
+  gap: 1rem;
+  margin: 3rem 0px;
+}
+.header-area a,
+.header-area button {
+  width: 100%;
+}
+
+.content-area {
+  display: flex;
+  gap: 1rem;
+  color: white;
+}
+
+.footer-area {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 4px;
+  padding-bottom: 3rem;
+}
+
+.border-container {
+  flex: 1;
+  position: relative;
+  border: 2px solid var(--color-of-the-year-2024);
+  border-radius: 12px;
+  padding: 1.4rem;
+  margin-bottom: 2rem;
+}
+
+.border-label {
+  position: absolute;
+  right: 2rem;
+  top: -0.5rem;
+  padding: 0px 0.6rem;
+  color: var(--color-of-the-year-2024);
+  background-color: #111;
+  font-weight: bold;
+}
+
+.mini-border {
+  border: 2px solid var(--color-of-the-year-2024);
+  border-radius: 12px;
+  padding: 0.1rem 0.8rem;
+  cursor: pointer;
+  color: var(--color-of-the-year-2024);
+}
+.mini-border:hover {
+  color: #fff;
+}
+
+.color-pixel {
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: var(--color-of-the-year-2024);
+}
+
+.flex {
+  display: flex;
+}
+.justify-center {
+  justify-items: center;
+}
+.item-center {
+  align-items: center;
+}
+.gap-4px {
+  gap: 4px;
+}
+
+@media only screen and (max-width: 600px) {
+  .content-area {
+    flex-direction: column;
+    gap: 0;
+  }
+}
