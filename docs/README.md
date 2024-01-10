@@ -94,7 +94,7 @@ const [address, setAddress] = useState<Address>({
 });
 
 const handleChange = (scope: string) => (value: string) => {
-  setAddress((oldAddr) => ({
+  setAddress((oldAddr: Address) => ({
     ...oldAddr,
     [scope]: value,
   }));
@@ -151,7 +151,7 @@ const App = () => {
   });
 
   const handleChange = (scope: string) => (value: string) => {
-    setAddress((oldAddr) => ({
+    setAddress((oldAddr: Address) => ({
       ...oldAddr,
       [scope]: value,
     }));

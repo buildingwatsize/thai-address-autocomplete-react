@@ -2,6 +2,10 @@
 
 ## Version
 
+### [v1.0.1] - `2024-01-10`
+
+- Edited return sub-component type React.JSX.Element for be more restrictive.
+
 ### [v1.0.0] - `2024-01-10`
 
 - Redesign all of code (like the new one) `NOTE: not compatible with the legacy v0.2.0`.
@@ -19,6 +23,7 @@
 
 - Initialized Project
 
+[v1.0.1]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.0.1
 [v1.0.0]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.0.0
 [v0.2.0]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v0.2.0
 [v0.1.0]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v0.1.0

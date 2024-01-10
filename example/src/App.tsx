@@ -21,7 +21,7 @@ const App = () => {
 
   const handleChange = (scope: string) => (value: string) => {
     console.log({ scope, value });
-    setAddress((oldAddr) => ({
+    setAddress((oldAddr: Address) => ({
       ...oldAddr,
       [scope]: value,
     }));

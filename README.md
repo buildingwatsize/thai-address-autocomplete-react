@@ -36,7 +36,7 @@ const App = () => {
   });
 
   const handleChange = (scope: string) => (value: string) => {
-    setAddress((oldAddr) => ({
+    setAddress((oldAddr: Address) => ({
       ...oldAddr,
       [scope]: value,
     }));
@@ -121,8 +121,9 @@ interface Address {
 
 - Example Project: [./example](./example)
 - more Document: [./docs](./docs/README.md)
-- Online Demo: [Demo]()
-- or CodeSandbox (JavaScript): [CodeSandbox]()
+- Online Demo: [Demo](https://thai-address-autocomplete-react-watsize.vercel.app)
+- or Online Editor (JavaScript): [StackBlitz](https://stackblitz.com/edit/thai-address-autocomplete-react-demo-javascript?file=src%2FApp.jsx)
+- or Online Editor (TypeScript): [StackBlitz](https://stackblitz.com/edit/thai-address-autocomplete-react-demo-typescript?file=src%2FApp.jsx)
 
 ## 🙋 FAQ?
 
