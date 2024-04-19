@@ -14,7 +14,7 @@ export interface Address {
 export interface CompatibleDatabase {
   lookup: string;
   words: string;
-  data: any[]; // eslint-disable-line
+  data: any[];
 }
 
 export interface Config {

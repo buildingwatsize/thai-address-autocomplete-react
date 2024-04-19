@@ -2,6 +2,12 @@
 
 ## Version
 
+### [v1.1.0] - `2024-04-19`
+
+- Updated deps
+- Migrated FlatConfig (`eslint@^9.0.0`)
+- Added clear all button for ease demo
+
 ### [v1.0.1] - `2024-01-10`
 
 - Edited return sub-component type React.JSX.Element for be more restrictive.
@@ -23,6 +29,7 @@
 
 - Initialized Project
 
+[v1.1.0]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.1.0
 [v1.0.1]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.0.1
 [v1.0.0]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.0.0
 [v0.2.0]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v0.2.0

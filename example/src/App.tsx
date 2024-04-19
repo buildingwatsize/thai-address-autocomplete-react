@@ -19,6 +19,15 @@ const App = () => {
     zipcode: "", // รหัสไปรษณีย์ postal code
   });
 
+  const handleClearAll = () => {
+    setAddress({
+      district: "",
+      amphoe: "",
+      province: "",
+      zipcode: "",
+    });
+  };
+
   const handleChange = (scope: string) => (value: string) => {
     console.log({ scope, value });
     setAddress((oldAddr: Address) => ({
@@ -111,6 +120,17 @@ const App = () => {
               />
             </div>
           )}
+
+          <button
+            style={{
+              padding: "0.25rem 1rem",
+              fontSize: "14px",
+              marginTop: "1rem",
+            }}
+            onClick={handleClearAll}
+          >
+            Clear All
+          </button>
         </div>
 
         <div className="border-container">
