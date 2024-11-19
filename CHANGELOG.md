@@ -2,6 +2,10 @@
 
 ## Version
 
+### [v1.1.3] - `2024-11-19`
+
+- Updated dependencies
+
 ### [v1.1.2] - `2024-08-15`
 
 - Updated dependencies
@@ -37,6 +41,7 @@
 
 - Initialized Project
 
+[v1.1.3]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.1.3
 [v1.1.2]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.1.2
 [v1.1.1]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.1.1
 [v1.1.0]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.1.0
