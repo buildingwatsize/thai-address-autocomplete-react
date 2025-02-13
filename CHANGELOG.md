@@ -2,6 +2,11 @@
 
 ## Version
 
+### [v1.2.0] - `2025-02-13`
+
+- On-boarding `React 19` ✨
+- Updated dependecies
+
 ### [v1.1.3] - `2024-11-19`
 
 - Updated dependencies
@@ -41,6 +46,7 @@
 
 - Initialized Project
 
+[v1.2.0]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.2.0
 [v1.1.3]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.1.3
 [v1.1.2]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.1.2
 [v1.1.1]: https://github.com/buildingwatsize/thai-address-autocomplete-react/releases/tag/v1.1.1

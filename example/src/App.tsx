@@ -71,24 +71,36 @@ const App = () => {
                 value={address["district"]}
                 onChange={handleChange("district")}
                 onSelect={handleSelect}
+                autoCompleteProps={{
+                  placeholder: "type something...",
+                }}
               />
               <label>อำเภอ</label>
               <InputThaiAddress.Amphoe
                 value={address["amphoe"]}
                 onChange={handleChange("amphoe")}
                 onSelect={handleSelect}
+                autoCompleteProps={{
+                  placeholder: "type something...",
+                }}
               />
               <label>จังหวัด</label>
               <InputThaiAddress.Province
                 value={address["province"]}
                 onChange={handleChange("province")}
                 onSelect={handleSelect}
+                autoCompleteProps={{
+                  placeholder: "type something...",
+                }}
               />
               <label>รหัสไปรษณีย์</label>
               <InputThaiAddress.Zipcode
                 value={address["zipcode"]}
                 onChange={handleChange("zipcode")}
                 onSelect={handleSelect}
+                autoCompleteProps={{
+                  placeholder: "type something...",
+                }}
                 // filter={(el) => !!el?.zipcode?.toString().endsWith("20")} // when typing in zipcode field then filter by zipcode which endswith "20"
               />
             </div>
@@ -99,24 +111,36 @@ const App = () => {
                 value={address["district"]}
                 onChange={handleChange("district")}
                 onSelect={handleSelect}
+                autoCompleteProps={{
+                  placeholder: "type something...",
+                }}
               />
               <label>อำเภอ (custom)</label>
               <InputCustomDB.Amphoe
                 value={address["amphoe"]}
                 onChange={handleChange("amphoe")}
                 onSelect={handleSelect}
+                autoCompleteProps={{
+                  placeholder: "type something...",
+                }}
               />
               <label>จังหวัด (custom)</label>
               <InputCustomDB.Province
                 value={address["province"]}
                 onChange={handleChange("province")}
                 onSelect={handleSelect}
+                autoCompleteProps={{
+                  placeholder: "type something...",
+                }}
               />
               <label>รหัสไปรษณีย์ (custom)</label>
               <InputCustomDB.Zipcode
                 value={address["zipcode"]}
                 onChange={handleChange("zipcode")}
                 onSelect={handleSelect}
+                autoCompleteProps={{
+                  placeholder: "type something...",
+                }}
               />
             </div>
           )}
@@ -161,11 +185,11 @@ const App = () => {
         <div className="flex item-center gap-4px">
           <div className="color-pixel" />
           <a
-            href="https://www.pantone.com/color-of-the-year/2024"
+            href="https://www.pantone.com/color-of-the-year/2025"
             target="_blank"
             rel="noopener"
           >
-            Pantone Color of the Year 2024 - Peach Fuzz
+            Pantone Color of the Year 2025 - Mocha Mousse
           </a>
         </div>
       </div>

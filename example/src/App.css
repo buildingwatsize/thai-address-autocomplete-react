@@ -28,7 +28,7 @@
 .border-container {
   flex: 1;
   position: relative;
-  border: 2px solid var(--color-of-the-year-2024);
+  border: 2px solid var(--color-of-the-year);
   border-radius: 12px;
   padding: 1.4rem;
   margin-bottom: 2rem;
@@ -39,17 +39,17 @@
   right: 2rem;
   top: -0.5rem;
   padding: 0px 0.6rem;
-  color: var(--color-of-the-year-2024);
+  color: var(--color-of-the-year);
   background-color: #111;
   font-weight: bold;
 }
 
 .mini-border {
-  border: 2px solid var(--color-of-the-year-2024);
+  border: 2px solid var(--color-of-the-year);
   border-radius: 12px;
   padding: 0.1rem 0.8rem;
   cursor: pointer;
-  color: var(--color-of-the-year-2024);
+  color: var(--color-of-the-year);
 }
 .mini-border:hover {
   color: #fff;
@@ -58,7 +58,7 @@
 .color-pixel {
   width: 0.8rem;
   height: 0.8rem;
-  background-color: var(--color-of-the-year-2024);
+  background-color: var(--color-of-the-year);
 }
 
 .flex {
