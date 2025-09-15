@@ -2,6 +2,10 @@
 
 ## Version
 
+### [v1.2.2] - `2025-09-15`
+
+- Updated dependecies
+
 ### [v1.2.1] - `2025-08-08`
 
 - Updated dependecies
