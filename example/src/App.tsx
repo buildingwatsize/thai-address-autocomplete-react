@@ -85,7 +85,7 @@ const App = () => {
                   value={address["amphoe"]}
                   onChange={handleChange("amphoe")}
                   onSelect={handleSelect}
-                // inputProps={{ placeholder: "type something..." }}
+                  inputProps={{ placeholder: "type something..." }}
                 />
               </div>
               <div>
