@@ -2,6 +2,12 @@
 
 ## Version
 
+### [v1.2.3] - `2025-07-20`
+
+- Updated dependencies
+- Pinned TypeScript to 6.x (ecosystem compatibility)
+- Removed eslint-plugin-react (incompatible with ESLint 10)
+
 ### [v1.2.2] - `2025-09-15`
 
 - Updated dependecies

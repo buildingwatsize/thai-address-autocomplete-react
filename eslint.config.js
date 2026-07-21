@@ -1,21 +1,11 @@
-// @ts-check
-
-import react from "eslint-plugin-react";
+import reactHooks from "eslint-plugin-react-hooks";
 import reactRefresh from "eslint-plugin-react-refresh";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
-import path from "path";
-import { fileURLToPath } from "url";
-
-// mimic CommonJS variables -- not needed if using CommonJS
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 export default [
   {
     files: ["lib/**/*.{ts,tsx}"],
-    // ignores: ["dist", "docs", "example", "**/eslint.config.js"],
     languageOptions: {
       globals: {
         ...globals.browser,
@@ -25,16 +15,17 @@ export default [
       parserOptions: {
         ecmaVersion: "latest",
         sourceType: "module",
-        project: ["./tsconfig.json", "./tsconfig.node.json"],
-        tsconfigRootDir: __dirname,
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
       },
     },
     plugins: {
       "@typescript-eslint": tseslint.plugin,
+      "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
-      react: react,
     },
     rules: {
+      ...reactHooks.configs.recommended.rules,
       "react-refresh/only-export-components": [
         "warn",
         { allowConstantExport: true },
@@ -43,8 +34,3 @@ export default [
     },
   },
 ];
-
-/* migrate documents
-ref1: https://eslint.org/blog/2022/08/new-config-system-part-2
-ref2: https://allalmohamedlamine.medium.com/eslint-flat-config-and-new-system-an-ultimate-deep-dive-2023-46aa151cbf2b
-*/
