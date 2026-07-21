@@ -5,7 +5,7 @@ import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), dts({ include: ["lib"] })],
+  plugins: [react(), dts({ include: ["lib"], exclude: ["lib/**/*.test.*"] })],
   build: {
     copyPublicDir: false,
     lib: {
@@ -13,7 +13,7 @@ export default defineConfig({
       formats: ["es"],
     },
     rollupOptions: {
-      external: ["react", "react/jsx-runtime", "react-dom", /^antd/],
+      external: ["react", "react/jsx-runtime", "react-dom", "clsx", "tailwind-merge", /^@base-ui\/react/],
       output: {
         entryFileNames: "[name].js",
       },

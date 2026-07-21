@@ -4,20 +4,49 @@
 [![NPM](https://img.shields.io/badge/Watsize-Library-289548)](https://www.npmjs.com/package/thai-address-autocomplete-react)
 [![Downloads](https://img.shields.io/npm/dm/thai-address-autocomplete-react.svg)](https://npmjs.org/package/thai-address-autocomplete-react)
 
-## 🎉 RELEASE v1 🎉
+## ⭐️ v2.0.0 -- New UI Combobox + Tailwind
 
-Get back to active!. I hope this library will be useful for all you guy. Welcome all PR as always. Thanks.
+Major rewrite: removed `antd` dependency entirely. Now powered by `@base-ui/react` Combobox primitives (auto-installed as dependency) with Tailwind CSS default styling, clear button, auto-highlight, province grouping, Portal-based positioning, and full WAI-ARIA compliance.
 
 ## 📘 About
 
-thai-address-autocomplete-react is an input component for ReactJS that can auto-complete Thai addresses with magic by `just typing something`. Anyway I hope this component will be a useful thing to you. :D Happy Coding.
+thai-address-autocomplete-react is an input component for ReactJS that can auto-complete Thai addresses with magic by `just typing something`. Happy Coding. :D
 
 ## ⚙ Install
 
 ```bash
 npm install thai-address-autocomplete-react
-# or just `yarn add thai-address-autocomplete-react`
+# or
+yarn add thai-address-autocomplete-react
 ```
+
+> **Note:** `antd` is no longer required. `@base-ui/react` is included as a dependency and installed automatically.
+
+## Styling
+
+The component renders with built-in default styles (inline) -- **no CSS configuration required**. It works out-of-the-box without any CSS framework.
+
+You can customize appearance via the `style`, `className`, `inputProps.style`, and `listClassName` props.
+
+### Custom Theme (Optional)
+
+To override default colors, define CSS variables on `:root` or any parent element:
+
+```css
+:root {
+  --color-background: #f7f5f2;
+  --color-foreground: #2d2a26;
+  --color-input: #e8e4e0;
+  --color-ring: #b8afa6;
+  --color-popover: #ffffff;
+  --color-popover-foreground: #2d2a26;
+  --color-accent: #b8afa6;
+  --color-accent-foreground: #2d2a26;
+  --color-muted-foreground: #8a8380;
+}
+```
+
+> **Note for Tailwind CSS 4 users:** `@theme` variables are only available to Tailwind utilities, not to inline styles. You must also declare them in `:root` for the library to pick them up.
 
 ## 📌 Example Usage
 
@@ -29,10 +58,10 @@ const InputThaiAddress = CreateInput();
 
 const App = () => {
   const [address, setAddress] = useState<Address>({
-    district: "", // ตำบล tambol
-    amphoe: "", // อำเภอ amphoe
-    province: "", // จังหวัด changwat
-    zipcode: "", // รหัสไปรษณีย์ postal code
+    district: "",
+    amphoe: "",
+    province: "",
+    zipcode: "",
   });
 
   const handleChange = (scope: string) => (value: string) => {
@@ -53,24 +82,28 @@ const App = () => {
         value={address["district"]}
         onChange={handleChange("district")}
         onSelect={handleSelect}
+        inputProps={{ placeholder: "type something..." }} // NOTE: Optional
       />
       <label>อำเภอ</label>
       <InputThaiAddress.Amphoe
         value={address["amphoe"]}
         onChange={handleChange("amphoe")}
         onSelect={handleSelect}
+        inputProps={{ placeholder: "type something..." }}
       />
       <label>จังหวัด</label>
       <InputThaiAddress.Province
         value={address["province"]}
         onChange={handleChange("province")}
         onSelect={handleSelect}
+        inputProps={{ placeholder: "type something..." }}
       />
       <label>รหัสไปรษณีย์</label>
       <InputThaiAddress.Zipcode
         value={address["zipcode"]}
         onChange={handleChange("zipcode")}
         onSelect={handleSelect}
+        inputProps={{ placeholder: "type something..." }}
       />
     </div>
   );
@@ -92,17 +125,21 @@ export default App;
 
 ### Component properties
 
-| **Property**          | **Description**                                                                                       | **Type**                                                          | **Default** |
-|-----------------------|-------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|-------------|
-| **scope**             | field name from record. Possible value will be "district", "amphoe", "province", and "zipcode".       | _string_                                                          | "province"  |
-| **delimiter**         | delimiter between scope values, which will show inside options in the autocomplete.                   | _string_                                                          | ", "        |
-| **value**             | value by scope.                                                                                       | _string_                                                          | ""          |
-| **filter**            | array filter function, used for fine grain result of options or fixed something on the result.        | _(value?: Address, index?: number, array?: Address[]) => boolean_ | () => true  |
-| **onChange**          | function callback, trigger on input changes.                                                          | _(value: string) => void_                                         | () => null  |
-| **onSelect**          | function callback, trigger on select the option.                                                      | _(address: Address) => void_                                      | () => null  |
-| **style**             | "Fashions fade, style is eternal." — Yves Saint Laurent                                               | _CSS.Properties_                                                  | {}          |
-| **className**         | css class...name.                                                                                     | _string_                                                          | ""          |
-| **autoCompleteProps** | the override properties of AutoComplete: check out `https://ant.design/components/auto-complete#api`. | _AutoCompleteProps_                                               | {}          |
+| **Property**    | **Description**                                                                                 | **Type**                                                          | **Default** |
+|-----------------|-------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|-------------|
+| **scope**       | field name from record. Possible value: "district", "amphoe", "province", "zipcode".            | _string_                                                          | "province"  |
+| **delimiter**   | delimiter between scope values, shown inside options.                                           | _string_                                                          | ", "        |
+| **value**       | controlled input value by scope.                                                                | _string_                                                          | ""          |
+| **filter**      | array filter function for fine-grained result filtering.                                        | _(value?: Address, index?: number, array?: Address[]) => boolean_ | () => true  |
+| **onChange**    | callback triggered on input changes.                                                            | _(value: string) => void_                                         | () => null  |
+| **onSelect**   | callback triggered on option selection.                                                         | _(address: Address) => void_                                      | () => null  |
+| **style**       | inline styles for the container `<div>`.                                                        | _React.CSSProperties_                                             | {}          |
+| **className**   | CSS class for the container `<div>`.                                                            | _string_                                                          | ""          |
+| **inputProps**  | pass-through HTML input attributes (placeholder, disabled, etc.).                               | _React.InputHTMLAttributes\<HTMLInputElement\>_                    | undefined   |
+| **listClassName** | override Tailwind classes for the dropdown list.                                              | _string_                                                          | undefined   |
+| **clearable**   | show a clear (X) button when the input has a value.                                             | _boolean_                                                         | true        |
+| **autoHighlight** | automatically highlight the first matching item in the dropdown.                              | _boolean_                                                         | true        |
+| **grouped**     | group dropdown items by province with headers and separators.                                   | _boolean_                                                         | true        |
 
 ### Data record (also named `Address`)
 
@@ -117,35 +154,165 @@ interface Address {
 }
 ```
 
-## 📝 Need More Example?
+## Migrating from v1 to v2
+
+### Breaking Changes
+
+1. **antd is no longer required** -- remove `antd` from your dependencies
+2. **Tailwind CSS is not required** -- component uses inline styles with built-in defaults (but className function `cn` is supported)
+3. **`autoCompleteProps` removed** -- use `inputProps` (standard HTML input attributes) instead
+4. **DOM structure changed** -- native `<input>` + `<ul>` listbox instead of antd widget
+
+### Before (v1)
+
+```bash
+npm install thai-address-autocomplete-react antd
+```
+
+```tsx
+<InputThaiAddress.District
+  value={address["district"]}
+  onChange={handleChange("district")}
+  onSelect={handleSelect}
+  autoCompleteProps={{ placeholder: "type something..." }}
+/>
+```
+
+### After (v2)
+
+```bash
+npm install thai-address-autocomplete-react
+```
+
+```tsx
+<InputThaiAddress.District
+  value={address["district"]}
+  onChange={handleChange("district")}
+  onSelect={handleSelect}
+  inputProps={{ placeholder: "type something..." }}
+/>
+```
+
+## Headless Hook: `useThaiAddress`
+
+For full UI control, use the headless hook -- it provides search logic only, no UI rendering.
+
+```tsx
+import { useThaiAddress, Address } from "thai-address-autocomplete-react";
+
+const App = () => {
+  const [value, setValue] = useState("");
+  const [address, setAddress] = useState<Address>({ district: "", amphoe: "", province: "", zipcode: "" });
+
+  const { suggestions, groupedSuggestions, search, select, clear, isOpen } = useThaiAddress({
+    scope: "district",
+  });
+
+  const handleChange = (text: string) => {
+    setValue(text);
+    search(text);
+  };
+
+  const handleSelect = (addr: Address) => {
+    setAddress(addr);
+    setValue(addr.district);
+    select(addr);
+  };
+
+  return (
+    <div>
+      <input value={value} onChange={(e) => handleChange(e.target.value)} placeholder="ตำบล" />
+      {isOpen && (
+        <ul>
+          {groupedSuggestions.map((group) => (
+            <li key={group.province}>
+              <strong>{group.province}</strong>
+              <ul>
+                {group.items.map((item) => (
+                  <li key={`${item.district}-${item.zipcode}`} onClick={() => handleSelect(item)}>
+                    {item.district}, {item.amphoe}, {item.zipcode}
+                  </li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};
+```
+
+### Hook Options
+
+| **Option**   | **Description**                                          | **Type**   | **Default** |
+|--------------|----------------------------------------------------------|------------|-------------|
+| **scope**    | search scope: "district", "amphoe", "province", "zipcode" | _Scope_    | (required)  |
+| **config**   | custom database config                                    | _Config_   | undefined   |
+| **filter**   | filter function for results                               | _Function_ | undefined   |
+| **grouped**  | compute grouped suggestions by province                   | _boolean_  | true        |
+| **delimiter**| delimiter string (for display purposes)                   | _string_   | ", "        |
+
+### Hook Return
+
+| **Property**           | **Type**                | **Description**                     |
+|------------------------|-------------------------|-------------------------------------|
+| **suggestions**        | _Address[]_             | flat list of matching addresses     |
+| **groupedSuggestions** | _GroupedSuggestions[]_  | results grouped by province         |
+| **search**             | _(text: string) => void_ | trigger a search                  |
+| **select**             | _(address: Address) => void_ | mark selection (clears results) |
+| **clear**              | _() => void_            | clear all results                   |
+| **isOpen**             | _boolean_               | true when suggestions are available |
+
+### Using with shadcn/ui
+
+```tsx
+import { useThaiAddress } from "thai-address-autocomplete-react";
+import { Input } from "@/components/ui/input";
+import { Command, CommandGroup, CommandItem, CommandList } from "@/components/ui/command";
+
+const { groupedSuggestions, search, select, isOpen } = useThaiAddress({ scope: "district" });
+
+<Input value={value} onChange={(e) => { setValue(e.target.value); search(e.target.value); }} />
+{isOpen && (
+  <Command>
+    <CommandList>
+      {groupedSuggestions.map((g) => (
+        <CommandGroup key={g.province} heading={g.province}>
+          {g.items.map((addr) => (
+            <CommandItem key={addr.district + addr.zipcode} onSelect={() => select(addr)}>
+              {addr.district}, {addr.amphoe}, {addr.zipcode}
+            </CommandItem>
+          ))}
+        </CommandGroup>
+      ))}
+    </CommandList>
+  </Command>
+)}
+```
+
+## Need More Example?
 
 - Example Project: [./example](./example)
 - more Document: [./docs](./docs/README.md)
 - Online Demo: [Demo](https://thai-address-autocomplete-react-watsize.vercel.app)
-- or Online Editor (JavaScript): [StackBlitz](https://stackblitz.com/edit/thai-address-autocomplete-react-demo-javascript?file=src%2FApp.jsx)
-- or Online Editor (TypeScript): [StackBlitz](https://stackblitz.com/edit/thai-address-autocomplete-react-demo-typescript?file=src%2FApp.jsx)
 
-## 🙋 FAQ?
+## FAQ?
 
 FAQ 1: **Can I use custom database ?**
 
-Yes, but to use custom database (in this version). It supports only `JSON format` file that output from [Database Tools by earthchie](https://github.com/earthchie/jquery.Thailand.js/tree/master?tab=readme-ov-file#ต้องการปรับปรุงฐานข้อมูล).
+Yes, it supports `JSON format` file that output from [Database Tools by earthchie](https://github.com/earthchie/jquery.Thailand.js/tree/master?tab=readme-ov-file#ต้องการปรับปรุงฐานข้อมูล).
 
 ```typescript
-// 1. import json
 import customDB from "./database/db.json";
-
-// 2. used by put in the configuration before initialize component
 const InputCustom = CreateInput({ database: customDB });
 ```
 
 FAQ 2: **I want to ask you more.**
 
-I provide a simple document on [./docs](./docs/README.md) to describe how to use this library.
+Please feel free to create an issue on GitHub. I would love to answer all questions, and PRs are always welcome.
 
-But if you're not found what you want to know, please feel free to create an issue on GitHub. I would love to answer all of the questions, and I am also welcome for all the PR. ❤️
-
-## 𝌡 Changelog
+## Changelog
 
 Please see more [CHANGELOG.md](CHANGELOG.md)
 
@@ -153,10 +320,8 @@ Please see more [CHANGELOG.md](CHANGELOG.md)
 
 MIT © [buildingwatsize](https://github.com/buildingwatsize)
 
-## ⚒ Thanks a lot
+## Thanks a lot
 
-- Base component:
-  - [ant-design/auto-complete](https://ant.design/components/auto-complete)
 - Amazing ideas:
   - [earthchie/jquery.Thailand.js](https://github.com/earthchie/jquery.Thailand.js)
   - [Sellsuki/thai-address-database](https://github.com/Sellsuki/thai-address-database)
